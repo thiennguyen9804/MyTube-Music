@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <Folder Include="Images\" />
-    <Folder Include="Resources\" />
+    <Folder Include="Song\" />
     <Folder Include="Song Images\" />
   </ItemGroup>
 
