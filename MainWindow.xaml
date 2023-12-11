@@ -33,6 +33,9 @@
 
 
             <Grid Grid.Row="0">
+                <Border BorderThickness="0" x:Name="headBar" BorderBrush="#FFB3B3B3">
+                    
+                </Border>
                 <StackPanel Orientation="Horizontal">
                     <Border Width="80">
                         <Button x:Name="menuButton"                       
@@ -47,6 +50,24 @@
                     <Image Margin="8 0 0 0" Source="D:\Visual Programming\MyTube Music\Images\Youtube Music Icon.png" Width="40" Height="40"/>
                     <TextBlock Text="Music" VerticalAlignment="Center" Margin="2 0 0 0" FontSize="35"
                                Foreground="White" FontWeight="Bold"/>
+                    <TextBox Style="{StaticResource FirstBlockOfSearchBox}"
+                             Margin="10 0 0 0"
+                             FontSize="15" Width="50" Height="50"
+                             IsEnabled="False">
+                        <TextBox.Tag>
+                            <Icon:PackIconMaterial Kind="Magnify"/>
+                        </TextBox.Tag>
+
+                    </TextBox>
+                    <TextBox Style="{StaticResource SecondBlockOfSearchBox}"
+                             Margin="0"
+                             FontSize="15" Width="350" Height="50"
+                             IsEnabled="True"
+                             Tag="Nhập tên bài hát, nghệ sĩ">
+                        
+                        
+
+                    </TextBox>
                 </StackPanel>
 
             </Grid>
@@ -56,17 +77,17 @@
                     <ColumnDefinition Width="80"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0" Margin="0 0 0 0">
+                <Border BorderThickness="0" x:Name="borderSideMenuBar" BorderBrush="#FFB3B3B3">
+                    <Grid Grid.Column="0" Margin="0 0 0 0">
                     <StackPanel>
                         <Button x:Name="homeButton"                           
                                 BorderThickness="0"
                                 Foreground="White"
                                 Style="{StaticResource SideBarIconStyle}"
                                 Grid.Column="0">
-                            <Icon:PackIconMaterial Kind="Home"/>
-                        </Button>
+                                <Icon:PackIconMaterial Kind="Home"></Icon:PackIconMaterial>
+                            </Button>
                         <TextBlock Text="Trang chủ" HorizontalAlignment="Center" Foreground="White"/>
-
                         <Button x:Name="compassButton"                           
                                 BorderThickness="0"
                                 Foreground="White"
@@ -85,22 +106,26 @@
                         <TextBlock Text="Thư viện" HorizontalAlignment="Center" Foreground="White"/>
                     </StackPanel>
                 </Grid>
+                </Border>
+                
 
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition Height="80"/>
                     </Grid.RowDefinitions>
-                    <ListView Foreground="White" x:Name="trackList" SelectionChanged="trackList_Selected" Background="{Binding}"
-                              ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="5 0 0 0"
-                              BorderThickness="0" Padding="15">
-                        <ListView.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel Orientation="Horizontal" MaxWidth="{Binding}"/>
-                            </ItemsPanelTemplate>
-                        </ListView.ItemsPanel>
-                        
-                    </ListView>
+                    <ScrollViewer ScrollChanged="ScrollViewer_ScrollChanged">
+                        <ListView Foreground="White" x:Name="trackList" SelectionChanged="trackList_Selected" Background="{Binding}"
+                                  BorderThickness="0" Padding="15">
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel Orientation="Horizontal" MaxWidth="{Binding}"/>
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+
+                        </ListView>
+                    </ScrollViewer>
+                   
                     <Grid Grid.Row="1">
                         <StackPanel Orientation="Horizontal">
                             <Button Click="Play_Click" Width="30" Height="30">
@@ -110,7 +135,7 @@
                                 <Icon:PackIconMaterial Kind="Pause"/>
                             </Button>
                             <MediaElement Width="0" x:Name="player" MediaOpened="player_MediaOpened"/>
-                            <Slider Name="slider" Width="200"/>
+                            <Slider Name="slider" Width="200" VerticalAlignment="Center"/>
                             <Button Content="Open" Width="60" Height="30" Click="Open_Click">
 
                             </Button>

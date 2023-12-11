@@ -60,6 +60,12 @@ namespace MyTube_Music
             slider.Maximum = position.TotalSeconds;
         }
 
+        private void ScrollViewer_ScrollChanged(object sender, ScrollChangedEventArgs e)
+        {
+            borderSideMenuBar.BorderThickness = new Thickness(0, 0, 0.2, 0);
+            headBar.BorderThickness = new Thickness(0, 0, 0, 0.2);
+        }
+
         private void Open_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
